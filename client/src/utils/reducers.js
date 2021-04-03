@@ -1,4 +1,4 @@
-import { useReducer } from 'react';
+// import { useReducer } from 'react';
 import {
     UPDATE_PRODUCTS,
     UPDATE_CATEGORIES,
@@ -11,7 +11,15 @@ import {
     TOGGLE_CART
 } from './actions';
 
-export const reducer = (state, action) => {
+const initialState = {
+    products: [],
+    categories: [],
+    currentCategory: '',
+    cartOpen: false,
+    cart: []
+}
+
+export const reducer = (state = initialState, action) => {
     switch (action.type) {
         // if action type value is the value of `UPDATE_PRODUCTS`, return a new state object with an updated products array
         case UPDATE_PRODUCTS:
@@ -87,7 +95,4 @@ export const reducer = (state, action) => {
     }
 };
 
-// function to initialize our global state object and provide functionality for updating that state by automatically running it through the custom reducer function created above. ** useReducer is used for managing larger amounts of state, unlike useState which is used for smaller tasks like handle form field values and button clicks
-export function useProductReducer(initialState) {
-    return useReducer(reducer, initialState);
-}
+export default reducer;

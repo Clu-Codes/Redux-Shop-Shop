@@ -1,11 +1,11 @@
 import React from 'react';
-import { useStoreContext } from '../../utils/GlobalState';
+import { useDispatch } from 'react-redux';
+// import { useStoreContext } from '../../utils/GlobalState';
 import { REMOVE_FROM_CART, UPDATE_CART_QUANTITY } from '../../utils/actions';
 import { idbPromise } from '../../utils/helpers';
 
 const CartItem = ({ item }) => {
-    // only destructuring dispatch since state CartItem component doesn't need to read state
-    const [, dispatch] = useStoreContext();
+    const dispatch = useDispatch();
 
     const removeFromCart = item => {
         dispatch({
